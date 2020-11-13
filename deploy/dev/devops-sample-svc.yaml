@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spring-boot-demo
+  name: spring-boot-demo
+  namespace: synext-demo
+spec:
+  ports:
+    - name: http
+      port: 8011
+      protocol: TCP
+      targetPort: 8011
+      nodePort: 30861
+  selector:
+    app: spring-boot-demo
+  type: NodePort

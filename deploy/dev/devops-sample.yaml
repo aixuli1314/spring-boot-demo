@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-boot-demo
+  name: spring-boot-demo
+  namespace: synext-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-demo
+  template:
+    metadata:
+      labels:
+        app: spring-boot-demo
+    spec:
+      containers:
+          image: hub.synext.co/spring-boot-demo:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER
+         
+          imagePullPolicy: Always
+          name: spring-boot-demo
+          ports:
+            - containerPort: 8011
+              protocol: TCP
+
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
