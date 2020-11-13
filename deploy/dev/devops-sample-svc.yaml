@@ -3,6 +3,7 @@ kind: Service
 metadata:
   labels:
     app: spring-boot-demo
+    component: spring-boot-demo    
   name: spring-boot-demo
   namespace: synext-demo
 spec:
@@ -14,4 +15,6 @@ spec:
       nodePort: 30861
   selector:
     app: spring-boot-demo
+    component: spring-boot-demo
+    tier: backend    
   type: NodePort
