@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - image: hub.synext.co/spring-boot-demo:SNAPSHOT-$BUILD_NUMBER
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: spring-boot-demo
         ports:
         - containerPort: 8011
@@ -31,5 +31,5 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
-      #restartPolicy: Always
+      restartPolicy: Always
       terminationGracePeriodSeconds: 30
